@@ -41,6 +41,14 @@ const config = {
         exclude: /node_modules/,
       },
       {
+        test: /\.s[ac]ss$/i,
+        use: [
+          "style-loader",
+          "css-loader",
+          "sass-loader",
+        ],
+      },
+      {
         test: /\.module.css$/,
         include: /src/,
         use: [isDev ? "style-loader" : MiniCssExtractPlugin.loader].concat([
