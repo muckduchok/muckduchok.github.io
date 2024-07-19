@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
-import coin from './coin.svg';
+import { useState } from 'react';
+import { Navigate, NavLink, Route, Routes } from 'react-router-dom';
+import { HomePage } from './home';
+import { Wallet } from './wallet';
 
 export const App = () => {
   const [count, setCount] = useState(0);
 
-  const clickOnMe = (e: any) => {
+  const clickOnMe = () => {
     setCount(() => count + 1)
   }
 
@@ -14,25 +16,24 @@ export const App = () => {
         My account
       </div>
 
+      
       <div className='app__body'>
-        <div className="app__body-counter">
-          <span>Balance:</span>
-          <span>{count}</span>
-        </div>
-       
-        <img onClick={(e) => clickOnMe(e)} src={coin} alt="" />
-        Dimon huy sosi
+        <Routes>
+          <Route path='/' index element={<HomePage count={count} clickOnMe={clickOnMe} />} />
+          <Route path='/wallet' element={<Wallet />} />
+          <Route path="*" element={<Navigate replace to="/" />} />
+        </Routes>
       </div>
 
       <div className='app__footer'>
         <div className="app__footer-btn">
-          <span>Home</span>
+          <NavLink to={'/'}>Home</NavLink>
         </div>
         <div className="app__footer-btn">
-          <span>Tasks</span>
+          <NavLink to={'/tasks'}>Tasks</NavLink>
         </div>
         <div className="app__footer-btn">
-          <span>Frens</span>
+          <NavLink to={'/wallet'}>Wallet</NavLink>
         </div>
       </div>
     </div>
