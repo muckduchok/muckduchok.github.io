@@ -21,7 +21,7 @@ export const App = () => {
         </div>
        
         <img onClick={(e) => clickOnMe(e)} src={coin} alt="" />
-        Maxim potapay menya
+        Dimon huy sosi
       </div>
 
       <div className='app__footer'>
