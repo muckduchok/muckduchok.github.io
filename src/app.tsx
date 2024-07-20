@@ -21,7 +21,7 @@ export const App = () => {
         <Routes>
           <Route path='/' index element={<HomePage count={count} clickOnMe={clickOnMe} />} />
           <Route path='/wallet' element={<Wallet />} />
-          <Route path="*" element={<Navigate replace to="/dist/" />} />
+          <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
       </div>
 
