@@ -121,6 +121,8 @@ const config = {
   devServer: {
     allowedHosts: "all",
     port: 9000,
+    hot: true,
+    historyApiFallback: true,
     client: {
       overlay: {
         errors: true,
