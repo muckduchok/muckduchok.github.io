@@ -9,7 +9,7 @@ const root = createRoot(document.getElementById("root") as HTMLElement);
 
 root.render(
 <AppearanceProvider>
-  <TonConnectUIProvider manifestUrl="https://muckduchok.github.io/tonconnect-manifest.json">
+  <TonConnectUIProvider restoreConnection manifestUrl="https://muckduchok.github.io/src/tonconnect-manifest.json">
     <Router>
       <App />
     </Router>
