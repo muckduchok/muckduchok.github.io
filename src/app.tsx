@@ -42,8 +42,8 @@ export const App = () => {
     const saveCount = localStorage.getItem('count');
     WebApp.ready();
     WebApp.expand();
-    WebApp.headerColor = '#070F2B';
-    WebApp.backgroundColor = '#070F2B';
+    WebApp.headerColor = '#330083';
+    WebApp.backgroundColor = '#330083';
 
     if (saveCount) {
       setCount(Number(saveCount) + 1);
