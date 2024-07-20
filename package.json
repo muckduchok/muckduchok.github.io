@@ -10,7 +10,7 @@
     "@babel/preset-typescript": "^7.18.6",
     "@tonconnect/ui-react": "^2.0.6",
     "@twa-dev/mark42": "^0.0.37",
-    "@twa-dev/sdk": "^6.7.1",
+    "@twa-dev/sdk": "^7.0.0",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.36.2",

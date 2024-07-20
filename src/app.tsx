@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 import { Navigate, NavLink, Route, Routes } from 'react-router-dom';
 import { HomePage } from './home';
 import { Wallet } from './wallet';
+import WebApp from '@twa-dev/sdk'
+import { Button } from 'antd';
 
 export const App = () => {
   const [count, setCount] = useState(0);
@@ -9,6 +11,14 @@ export const App = () => {
   const clickOnMe = () => {
     setCount(() => count + 1)
   }
+
+  const testBtn = () => {
+    WebApp.showAlert('hello its test alert')
+  }
+
+  useEffect(() => {
+    WebApp.ready();
+  }, [])
 
   return (
     <div className='app'>
@@ -18,6 +28,7 @@ export const App = () => {
 
       
       <div className='app__body'>
+        <Button onClick={() => testBtn()}>Test Alert</Button>
         <Routes>
           <Route path='/' index element={<HomePage count={count} clickOnMe={clickOnMe} />} />
           <Route path='/wallet' element={<Wallet />} />

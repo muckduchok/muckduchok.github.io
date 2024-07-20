@@ -1,5 +1,6 @@
 import {TonConnectButton, useTonConnectUI} from "@tonconnect/ui-react";
 import TonConnect from '@tonconnect/sdk';
+import { BackButton } from "@twa-dev/sdk/react";
 import {Button, Input} from "antd";
 import {useEffect, useState} from "react";
 
@@ -46,6 +47,7 @@ const transaction = {
         <Input type={'number'} onChange={(e: any) => setValue(e.target.value)} value={value} suffix="TON" />
         <Button onClick={() => donateMe()} type="primary">Donate Author</Button>
       </div>
+      <BackButton onClick={() => window.history.back()} />
     </div>
   );
 };
