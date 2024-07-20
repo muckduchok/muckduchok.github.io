@@ -11,6 +11,10 @@ export const App = () => {
     setCount(() => count + 1)
   }
 
+  const handleHaptic = () => {
+    WebApp.HapticFeedback.selectionChanged();
+  }
+
   useEffect(() => {
     WebApp.ready();
     WebApp.headerColor = '#070F2B';
@@ -33,13 +37,23 @@ export const App = () => {
       </div>
 
       <div className='app__footer'>
-        <NavLink to={'/'} className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}>
+        <NavLink
+          to={'/'}
+          onClick={() => handleHaptic()}
+          className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}>
           Home
         </NavLink>
-        <NavLink to={'/tasks'} className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}>
+        <NavLink
+          to={'/tasks'}
+          onClick={() => handleHaptic()}
+          className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}>
           Tasks
         </NavLink>
-        <NavLink to={'/wallet'} className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}>
+        <NavLink
+
+          to={'/wallet'}
+          onClick={() => handleHaptic()}
+          className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}>
           Wallet
         </NavLink>
       </div>
