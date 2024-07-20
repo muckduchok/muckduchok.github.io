@@ -3,7 +3,6 @@ import { Navigate, NavLink, Route, Routes } from 'react-router-dom';
 import { HomePage } from './home';
 import { Wallet } from './wallet';
 import WebApp from '@twa-dev/sdk'
-import { Button } from 'antd';
 
 export const App = () => {
   const [count, setCount] = useState(0);
@@ -12,12 +11,10 @@ export const App = () => {
     setCount(() => count + 1)
   }
 
-  const testBtn = () => {
-    WebApp.showAlert('hello its test alert')
-  }
-
   useEffect(() => {
     WebApp.ready();
+    WebApp.headerColor = '#070F2B';
+    WebApp.backgroundColor = '#070F2B';
   }, [])
 
   return (
@@ -28,7 +25,6 @@ export const App = () => {
 
       
       <div className='app__body'>
-        <Button onClick={() => testBtn()}>Test Alert</Button>
         <Routes>
           <Route path='/' index element={<HomePage count={count} clickOnMe={clickOnMe} />} />
           <Route path='/wallet' element={<Wallet />} />
@@ -37,15 +33,15 @@ export const App = () => {
       </div>
 
       <div className='app__footer'>
-        <div className="app__footer-btn">
-          <NavLink to={'/'}>Home</NavLink>
-        </div>
-        <div className="app__footer-btn">
-          <NavLink to={'/tasks'}>Tasks</NavLink>
-        </div>
-        <div className="app__footer-btn">
-          <NavLink to={'/wallet'}>Wallet</NavLink>
-        </div>
+        <NavLink to={'/'} className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}>
+          Home
+        </NavLink>
+        <NavLink to={'/tasks'} className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}>
+          Tasks
+        </NavLink>
+        <NavLink to={'/wallet'} className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}>
+          Wallet
+        </NavLink>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import TonConnect from '@tonconnect/sdk';
 import { BackButton } from "@twa-dev/sdk/react";
 import {Button, Input} from "antd";
 import {useEffect, useState} from "react";
+import WebApp from '@twa-dev/sdk'
 
 export const Wallet = () => {
   const connector = new TonConnect();
@@ -22,15 +23,16 @@ const transaction = {
 }
 
   const donateMe = async () => {
+    WebApp.HapticFeedback.selectionChanged();
     if (!connector.connected) {
-      alert('Please connect wallet to send the transaction!');
+      WebApp.showAlert('Please connect wallet to send the transaction!');
     }
 
     console.log('transaction', transaction)
     console.log('tonConnectUI', tonConnectUI)
 
     try {
-      const result = await tonConnectUI.sendTransaction(transaction)
+      await tonConnectUI.sendTransaction(transaction)
     } catch (err) {
       console.error('ERROR',err)
     }
