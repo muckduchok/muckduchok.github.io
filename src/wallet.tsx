@@ -1,31 +1,43 @@
 import {TonConnectButton, useTonConnectUI} from "@tonconnect/ui-react";
+import TonConnect from '@tonconnect/sdk';
 import {Button, Input} from "antd";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 export const Wallet = () => {
+  const connector = new TonConnect();
+  connector.restoreConnection();
+
   const [tonConnectUI] = useTonConnectUI();
   const [value, setValue] = useState('')
 
-  const transaction: any = {
-    validUntil: Math.floor(Date.now() / 1000) + 10,
-    message: [
-      {
-        address: '0:412410771DA82CBA306A55FA9E0D43C9D245E38133CB58F1457DFB8D5CD8892F',
-        amount: value
-      }
+const transaction = {
+    validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
+    messages: [
+        {
+            address: "UQDvzoUNLy2IUNu9U4Bn8c9nVTXwI-xn9wnBxigWhSA-Lxqn",
+            amount: (parseFloat(value) * 1000000000).toString(),
+        }
     ]
-  }
+}
 
   const donateMe = async () => {
+    if (!connector.connected) {
+      alert('Please connect wallet to send the transaction!');
+    }
+
     console.log('transaction', transaction)
     console.log('tonConnectUI', tonConnectUI)
+
     try {
       const result = await tonConnectUI.sendTransaction(transaction)
-      console.log('result', result)
     } catch (err) {
       console.error('ERROR',err)
     }
   }
+
+  useEffect(() => {
+    // console.log('connector', connector)
+  }, [connector])
 
   return (
     <div className="wallet">

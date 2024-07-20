@@ -19,21 +19,21 @@ export const App = () => {
       
       <div className='app__body'>
         <Routes>
-          <Route path='/dist/' index element={<HomePage count={count} clickOnMe={clickOnMe} />} />
-          <Route path='/dist/wallet' element={<Wallet />} />
+          <Route path='/' index element={<HomePage count={count} clickOnMe={clickOnMe} />} />
+          <Route path='/wallet' element={<Wallet />} />
           <Route path="*" element={<Navigate replace to="/dist/" />} />
         </Routes>
       </div>
 
       <div className='app__footer'>
         <div className="app__footer-btn">
-          <NavLink to={'/dist/'}>Home</NavLink>
+          <NavLink to={'/'}>Home</NavLink>
         </div>
         <div className="app__footer-btn">
-          <NavLink to={'/dist/tasks'}>Tasks</NavLink>
+          <NavLink to={'/tasks'}>Tasks</NavLink>
         </div>
         <div className="app__footer-btn">
-          <NavLink to={'/dist/wallet'}>Wallet</NavLink>
+          <NavLink to={'/wallet'}>Wallet</NavLink>
         </div>
       </div>
     </div>
