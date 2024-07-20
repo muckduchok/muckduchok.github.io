@@ -46,7 +46,6 @@ export const Wallet = () => {
       <TonConnectButton />
       <div className='wallet__donate'>
         <Input
-          inputMode="numeric"
           type={'number'}
           onChange={handleChange}
           value={value}
