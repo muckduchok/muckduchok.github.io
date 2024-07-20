@@ -17,6 +17,7 @@ export const App = () => {
 
   useEffect(() => {
     WebApp.ready();
+    WebApp.expand();
     WebApp.headerColor = '#070F2B';
     WebApp.backgroundColor = '#070F2B';
   }, [])
