@@ -47,7 +47,6 @@ export const Wallet = () => {
       <div className='wallet__donate'>
         <Input
           inputMode="numeric"
-          pattern="[0-9]*"
           type={'number'}
           onChange={handleChange}
           value={value}
